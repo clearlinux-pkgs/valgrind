@@ -1,0 +1,33 @@
+From 66e3228de3a8a789b2840fd72ae975a1108572f7 Mon Sep 17 00:00:00 2001
+From: Victor Rodriguez <victor.rodriguez.bahena@intel.com>
+Date: Fri, 12 Jun 2015 17:12:33 +0000
+Subject: [PATCH] Accept-glibc-2.21-as-valid
+
+This patch makes glibc-2.21 be taken as valid by valgrind configure
+
+Signed-off-by: Victor Rodriguez <victor.rodriguez.bahena@intel.com>
+---
+ configure.ac | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index bac11ef..bd203e7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -973,6 +973,13 @@ case "${GLIBC_VERSION}" in
+ 	DEFAULT_SUPP="glibc-2.34567-NPTL-helgrind.supp ${DEFAULT_SUPP}"
+ 	DEFAULT_SUPP="glibc-2.X-drd.supp ${DEFAULT_SUPP}"
+ 	;;
++     2.21)
++	AC_MSG_RESULT(2.21 family)
++	AC_DEFINE([GLIBC_2_21], 1, [Define to 1 if you're using glibc 2.21.x])
++	DEFAULT_SUPP="glibc-2.X.supp ${DEFAULT_SUPP}"
++	DEFAULT_SUPP="glibc-2.34567-NPTL-helgrind.supp ${DEFAULT_SUPP}"
++	DEFAULT_SUPP="glibc-2.X-drd.supp ${DEFAULT_SUPP}"
++	;;
+      darwin)
+ 	AC_MSG_RESULT(Darwin)
+ 	AC_DEFINE([DARWIN_LIBC], 1, [Define to 1 if you're using Darwin])
+-- 
+2.4.3
+
