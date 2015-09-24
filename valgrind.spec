@@ -1,8 +1,8 @@
 Name     : valgrind
-Version  : 3.10.1
+Version  : 3.11.0
 Release  : 8
-URL      : http://valgrind.org/downloads/valgrind-3.10.1.tar.bz2
-Source0  : http://valgrind.org/downloads/valgrind-3.10.1.tar.bz2
+URL      : http://valgrind.org/downloads/valgrind-3.11.0.tar.bz2
+Source0  : http://valgrind.org/downloads/valgrind-3.11.0.tar.bz2
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GPL-2.0+ GFDL-1.2 GPL-2.0
@@ -10,7 +10,6 @@ Requires: valgrind-bin
 Requires: valgrind-doc
 BuildRequires : sed
 Patch1: glibc-2.21.patch
-Patch2: 0001-Fix-configure-for-Linux-kernel-4.0-rc1.patch
 Patch3: 0001-Accept-glibc-2.21-as-valid.patch
 
 %description
@@ -42,14 +41,13 @@ doc components for the valgrind package.
 
 
 %prep
-%setup -q -n valgrind-3.10.1
+%setup -q -n valgrind-3.11.0
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 %build
 # -fexceptions causes memcheck link command to fail when built with GCC 5.1
-export CFLAGS=`echo $CFLAGS | sed s,-fexceptions,,g`
+export CFLAGS=`echo $CFLAGS | sed s,-fexceptions,,g | sed s:-Wp,-D_FORTIFY_SOURCE=2::g | sed s:-fstack-protector::g `
 ./autogen.sh
 %configure --disable-static --enable-only64bit --enable-tls
 make V=1 %{?_smp_mflags}
@@ -297,6 +295,16 @@ rm -rf %{buildroot}
 /usr/include/valgrind/vki/vki-xen-version.h
 /usr/include/valgrind/vki/vki-xen-x86.h
 /usr/include/valgrind/vki/vki-xen.h
+/usr/include/valgrind/libvex_guest_tilegx.h
+/usr/include/valgrind/pub_tool_guest.h
+/usr/include/valgrind/pub_tool_transtab.h
+/usr/include/valgrind/vki/vki-scnums-solaris.h
+/usr/include/valgrind/vki/vki-solaris-repcache.h
+/usr/include/valgrind/vki/vki-solaris.h
+/usr/include/valgrind/vki/vki-xen-physdev.h
+/usr/include/valgrind/vki/vki-xen-schedop.h
+/usr/include/valgrind/vki/vki-xen-xsm.h
+
 /usr/lib64/pkgconfig/*.pc
 
 %files doc
