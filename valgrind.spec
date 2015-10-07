@@ -54,6 +54,12 @@ make V=1 %{?_smp_mflags}
 
 %check
 make VERBOSE=1 V=1 %{?_smp_mflags} check
+/usr/bin/perl tests/vg_regtest cachegrind ||:
+/usr/bin/perl tests/vg_regtest callgrind ||:
+/usr/bin/perl tests/vg_regtest massif ||:
+/usr/bin/perl tests/vg_regtest lackey ||:
+/usr/bin/perl tests/vg_regtest helgrind ||:
+/usr/bin/perl tests/vg_regtest drd ||:
 
 %install
 rm -rf %{buildroot}
