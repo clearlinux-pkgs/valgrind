@@ -1,6 +1,6 @@
 Name     : valgrind
 Version  : 3.11.0
-Release  : 11
+Release  : 12
 URL      : http://valgrind.org/downloads/valgrind-3.11.0.tar.bz2
 Source0  : http://valgrind.org/downloads/valgrind-3.11.0.tar.bz2
 Summary  : Valgrind Memory Debugger
@@ -93,7 +93,7 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/amd64-avx-linux-valgrind.xml
 /usr/lib64/valgrind/amd64-avx-linux.xml
 /usr/lib64/valgrind/amd64-coresse-valgrind.xml
-/usr/lib64/valgrind/amd64-linux-valgrind.xml
+/usr/lib64/valgrind/*-linux-valgrind.xml
 /usr/lib64/valgrind/arm-core-valgrind-s1.xml
 /usr/lib64/valgrind/arm-core-valgrind-s2.xml
 /usr/lib64/valgrind/arm-core.xml
@@ -102,20 +102,20 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/arm-vfpv3.xml
 /usr/lib64/valgrind/arm-with-vfpv3-valgrind.xml
 /usr/lib64/valgrind/arm-with-vfpv3.xml
-/usr/lib64/valgrind/cachegrind-amd64-linux
-/usr/lib64/valgrind/callgrind-amd64-linux
+/usr/lib64/valgrind/cachegrind-*-linux
+/usr/lib64/valgrind/callgrind-*-linux
 /usr/lib64/valgrind/default.supp
-/usr/lib64/valgrind/drd-amd64-linux
-/usr/lib64/valgrind/exp-bbv-amd64-linux
-/usr/lib64/valgrind/exp-dhat-amd64-linux
-/usr/lib64/valgrind/exp-sgcheck-amd64-linux
-/usr/lib64/valgrind/getoff-amd64-linux
-/usr/lib64/valgrind/helgrind-amd64-linux
+/usr/lib64/valgrind/drd-*-linux
+/usr/lib64/valgrind/exp-bbv-*-linux
+/usr/lib64/valgrind/exp-dhat-*-linux
+/usr/lib64/valgrind/exp-sgcheck-*-linux
+/usr/lib64/valgrind/getoff-*-linux
+/usr/lib64/valgrind/helgrind-*-linux
 /usr/lib64/valgrind/i386-coresse-valgrind.xml
 /usr/lib64/valgrind/i386-linux-valgrind.xml
-/usr/lib64/valgrind/lackey-amd64-linux
-/usr/lib64/valgrind/massif-amd64-linux
-/usr/lib64/valgrind/memcheck-amd64-linux
+/usr/lib64/valgrind/lackey-*-linux
+/usr/lib64/valgrind/massif-*-linux
+/usr/lib64/valgrind/memcheck-*-linux
 /usr/lib64/valgrind/mips-cp0-valgrind-s1.xml
 /usr/lib64/valgrind/mips-cp0-valgrind-s2.xml
 /usr/lib64/valgrind/mips-cp0.xml
@@ -138,7 +138,7 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/mips64-fpu.xml
 /usr/lib64/valgrind/mips64-linux-valgrind.xml
 /usr/lib64/valgrind/mips64-linux.xml
-/usr/lib64/valgrind/none-amd64-linux
+/usr/lib64/valgrind/none-*-linux
 /usr/lib64/valgrind/power-altivec-valgrind-s1.xml
 /usr/lib64/valgrind/power-altivec-valgrind-s2.xml
 /usr/lib64/valgrind/power-altivec.xml
@@ -175,13 +175,13 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/s390x-linux64-valgrind-s1.xml
 /usr/lib64/valgrind/s390x-linux64-valgrind-s2.xml
 /usr/lib64/valgrind/s390x-linux64.xml
-/usr/lib64/valgrind/vgpreload_core-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_drd-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_exp-dhat-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_exp-sgcheck-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_helgrind-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_massif-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+/usr/lib64/valgrind/vgpreload_core-*-linux.so
+/usr/lib64/valgrind/vgpreload_drd-*-linux.so
+/usr/lib64/valgrind/vgpreload_exp-dhat-*-linux.so
+/usr/lib64/valgrind/vgpreload_exp-sgcheck-*-linux.so
+/usr/lib64/valgrind/vgpreload_helgrind-*-linux.so
+/usr/lib64/valgrind/vgpreload_massif-*-linux.so
+/usr/lib64/valgrind/vgpreload_memcheck-*-linux.so
 
 %files bin
 %defattr(-,root,root,-)
@@ -259,7 +259,7 @@ rm -rf %{buildroot}
 /usr/include/valgrind/pub_tool_wordfm.h
 /usr/include/valgrind/pub_tool_xarray.h
 /usr/include/valgrind/valgrind.h
-/usr/include/valgrind/vki/vki-amd64-linux.h
+/usr/include/valgrind/vki/vki-*-linux.h
 /usr/include/valgrind/vki/vki-arm-linux.h
 /usr/include/valgrind/vki/vki-arm64-linux.h
 /usr/include/valgrind/vki/vki-darwin.h
@@ -267,7 +267,7 @@ rm -rf %{buildroot}
 /usr/include/valgrind/vki/vki-linux.h
 /usr/include/valgrind/vki/vki-mips32-linux.h
 /usr/include/valgrind/vki/vki-mips64-linux.h
-/usr/include/valgrind/vki/vki-posixtypes-amd64-linux.h
+/usr/include/valgrind/vki/vki-posixtypes-*-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-arm-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-arm64-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-mips32-linux.h
@@ -279,7 +279,7 @@ rm -rf %{buildroot}
 /usr/include/valgrind/vki/vki-ppc32-linux.h
 /usr/include/valgrind/vki/vki-ppc64-linux.h
 /usr/include/valgrind/vki/vki-s390x-linux.h
-/usr/include/valgrind/vki/vki-scnums-amd64-linux.h
+/usr/include/valgrind/vki/vki-scnums-*-linux.h
 /usr/include/valgrind/vki/vki-scnums-arm-linux.h
 /usr/include/valgrind/vki/vki-scnums-arm64-linux.h
 /usr/include/valgrind/vki/vki-scnums-darwin.h
