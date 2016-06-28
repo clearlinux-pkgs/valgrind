@@ -10,7 +10,9 @@ Requires: valgrind-bin
 Requires: valgrind-doc
 BuildRequires : sed
 Patch1: glibc-2.21.patch
-Patch3: 0001-Accept-glibc-2.21-as-valid.patch
+Patch2: 0001-Accept-glibc-2.21-as-valid.patch
+Patch3: Don-t-advertise-RDRAND-in-cpuid-for-Core-i7-4910-lik.patch
+Patch4: Make-isZeroU-handle-the-V256-case.-Fixes-356393.patch
 
 %description
 
@@ -43,7 +45,9 @@ doc components for the valgrind package.
 %prep
 %setup -q -n valgrind-3.11.0
 %patch1 -p1
+%patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 # -fexceptions causes memcheck link command to fail when built with GCC 5.1
