@@ -1,8 +1,8 @@
 Name     : valgrind
-Version  : 3.11.0
+Version  : 3.12.0
 Release  : 20
-URL      : http://valgrind.org/downloads/valgrind-3.11.0.tar.bz2
-Source0  : http://valgrind.org/downloads/valgrind-3.11.0.tar.bz2
+URL      : http://valgrind.org/downloads/valgrind-3.12.0.tar.bz2
+Source0  : http://valgrind.org/downloads/valgrind-3.12.0.tar.bz2
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GPL-2.0+ GFDL-1.2 GPL-2.0
@@ -11,8 +11,6 @@ Requires: valgrind-doc
 BuildRequires : sed
 Patch1: glibc-2.21.patch
 Patch2: 0001-Accept-glibc-2.21-as-valid.patch
-Patch3: Don-t-advertise-RDRAND-in-cpuid-for-Core-i7-4910-lik.patch
-Patch4: Make-isZeroU-handle-the-V256-case.-Fixes-356393.patch
 
 %description
 
@@ -43,11 +41,9 @@ doc components for the valgrind package.
 
 
 %prep
-%setup -q -n valgrind-3.11.0
+%setup -q -n valgrind-3.12.0
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 # -fexceptions causes memcheck link command to fail when built with GCC 5.1
@@ -155,9 +151,14 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/power-linux-valgrind-s1.xml
 /usr/lib64/valgrind/power-linux-valgrind-s2.xml
 /usr/lib64/valgrind/power-linux.xml
+/usr/lib64/valgrind/power-vsx-valgrind-s1.xml
+/usr/lib64/valgrind/power-vsx-valgrind-s2.xml
+/usr/lib64/valgrind/power-vsx.xml
 /usr/lib64/valgrind/power64-core-valgrind-s1.xml
 /usr/lib64/valgrind/power64-core-valgrind-s2.xml
 /usr/lib64/valgrind/power64-core.xml
+/usr/lib64/valgrind/power64-core2-valgrind-s1.xml
+/usr/lib64/valgrind/power64-core2-valgrind-s2.xml
 /usr/lib64/valgrind/power64-linux-valgrind-s1.xml
 /usr/lib64/valgrind/power64-linux-valgrind-s2.xml
 /usr/lib64/valgrind/power64-linux.xml
