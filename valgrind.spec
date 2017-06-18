@@ -1,14 +1,19 @@
 Name     : valgrind
-Version  : 3.12.0
+Version  : 3.13.0
 Release  : 24
-URL      : http://valgrind.org/downloads/valgrind-3.12.0.tar.bz2
-Source0  : http://valgrind.org/downloads/valgrind-3.12.0.tar.bz2
+URL      : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
+Source0  : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GPL-2.0+ GFDL-1.2 GPL-2.0
 Requires: valgrind-bin
 Requires: valgrind-doc
 BuildRequires : sed
+BuildRequires : zlib-dev
+BuildRequires : libxml2-dev
+BuildRequires : mpich-dev
+BuildRequires : boost-dev
+
 Patch1: glibc-2.21.patch
 Patch2: 0001-Accept-glibc-2.21-as-valid.patch
 
@@ -41,7 +46,7 @@ doc components for the valgrind package.
 
 
 %prep
-%setup -q -n valgrind-3.12.0
+%setup -q -n valgrind-3.13.0
 %patch1 -p1
 %patch2 -p1
 
@@ -67,119 +72,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/valgrind/32bit-core-valgrind-s1.xml
-/usr/lib64/valgrind/32bit-core-valgrind-s2.xml
-/usr/lib64/valgrind/32bit-core.xml
-/usr/lib64/valgrind/32bit-linux-valgrind-s1.xml
-/usr/lib64/valgrind/32bit-linux-valgrind-s2.xml
-/usr/lib64/valgrind/32bit-linux.xml
-/usr/lib64/valgrind/32bit-sse-valgrind-s1.xml
-/usr/lib64/valgrind/32bit-sse-valgrind-s2.xml
-/usr/lib64/valgrind/32bit-sse.xml
-/usr/lib64/valgrind/64bit-avx-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-avx-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-avx.xml
-/usr/lib64/valgrind/64bit-core-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-core-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-core.xml
-/usr/lib64/valgrind/64bit-linux-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-linux-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-linux.xml
-/usr/lib64/valgrind/64bit-sse-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-sse-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-sse.xml
-/usr/lib64/valgrind/amd64-avx-coresse-valgrind.xml
-/usr/lib64/valgrind/amd64-avx-coresse.xml
-/usr/lib64/valgrind/amd64-avx-linux-valgrind.xml
-/usr/lib64/valgrind/amd64-avx-linux.xml
-/usr/lib64/valgrind/amd64-coresse-valgrind.xml
-/usr/lib64/valgrind/*-linux-valgrind.xml
-/usr/lib64/valgrind/arm-core-valgrind-s1.xml
-/usr/lib64/valgrind/arm-core-valgrind-s2.xml
-/usr/lib64/valgrind/arm-core.xml
-/usr/lib64/valgrind/arm-vfpv3-valgrind-s1.xml
-/usr/lib64/valgrind/arm-vfpv3-valgrind-s2.xml
-/usr/lib64/valgrind/arm-vfpv3.xml
-/usr/lib64/valgrind/arm-with-vfpv3-valgrind.xml
-/usr/lib64/valgrind/arm-with-vfpv3.xml
-/usr/lib64/valgrind/cachegrind-*-linux
-/usr/lib64/valgrind/callgrind-*-linux
-/usr/lib64/valgrind/default.supp
-/usr/lib64/valgrind/drd-*-linux
-/usr/lib64/valgrind/exp-bbv-*-linux
-/usr/lib64/valgrind/exp-dhat-*-linux
-/usr/lib64/valgrind/exp-sgcheck-*-linux
-/usr/lib64/valgrind/getoff-*-linux
-/usr/lib64/valgrind/helgrind-*-linux
-/usr/lib64/valgrind/i386-coresse-valgrind.xml
-/usr/lib64/valgrind/i386-linux-valgrind.xml
-/usr/lib64/valgrind/lackey-*-linux
-/usr/lib64/valgrind/massif-*-linux
-/usr/lib64/valgrind/memcheck-*-linux
-/usr/lib64/valgrind/mips-cp0-valgrind-s1.xml
-/usr/lib64/valgrind/mips-cp0-valgrind-s2.xml
-/usr/lib64/valgrind/mips-cp0.xml
-/usr/lib64/valgrind/mips-cpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips-cpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips-cpu.xml
-/usr/lib64/valgrind/mips-fpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips-fpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips-fpu.xml
-/usr/lib64/valgrind/mips-linux-valgrind.xml
-/usr/lib64/valgrind/mips-linux.xml
-/usr/lib64/valgrind/mips64-cp0-valgrind-s1.xml
-/usr/lib64/valgrind/mips64-cp0-valgrind-s2.xml
-/usr/lib64/valgrind/mips64-cp0.xml
-/usr/lib64/valgrind/mips64-cpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips64-cpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips64-cpu.xml
-/usr/lib64/valgrind/mips64-fpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips64-fpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips64-fpu.xml
-/usr/lib64/valgrind/mips64-linux-valgrind.xml
-/usr/lib64/valgrind/mips64-linux.xml
-/usr/lib64/valgrind/none-*-linux
-/usr/lib64/valgrind/power-altivec-valgrind-s1.xml
-/usr/lib64/valgrind/power-altivec-valgrind-s2.xml
-/usr/lib64/valgrind/power-altivec.xml
-/usr/lib64/valgrind/power-core-valgrind-s1.xml
-/usr/lib64/valgrind/power-core-valgrind-s2.xml
-/usr/lib64/valgrind/power-core.xml
-/usr/lib64/valgrind/power-fpu-valgrind-s1.xml
-/usr/lib64/valgrind/power-fpu-valgrind-s2.xml
-/usr/lib64/valgrind/power-fpu.xml
-/usr/lib64/valgrind/power-linux-valgrind-s1.xml
-/usr/lib64/valgrind/power-linux-valgrind-s2.xml
-/usr/lib64/valgrind/power-linux.xml
-/usr/lib64/valgrind/power-vsx-valgrind-s1.xml
-/usr/lib64/valgrind/power-vsx-valgrind-s2.xml
-/usr/lib64/valgrind/power-vsx.xml
-/usr/lib64/valgrind/power64-core-valgrind-s1.xml
-/usr/lib64/valgrind/power64-core-valgrind-s2.xml
-/usr/lib64/valgrind/power64-core.xml
-/usr/lib64/valgrind/power64-core2-valgrind-s1.xml
-/usr/lib64/valgrind/power64-core2-valgrind-s2.xml
-/usr/lib64/valgrind/power64-linux-valgrind-s1.xml
-/usr/lib64/valgrind/power64-linux-valgrind-s2.xml
-/usr/lib64/valgrind/power64-linux.xml
-/usr/lib64/valgrind/powerpc-altivec32l-valgrind.xml
-/usr/lib64/valgrind/powerpc-altivec32l.xml
-/usr/lib64/valgrind/powerpc-altivec64l-valgrind.xml
-/usr/lib64/valgrind/powerpc-altivec64l.xml
-/usr/lib64/valgrind/s390-acr-valgrind-s1.xml
-/usr/lib64/valgrind/s390-acr-valgrind-s2.xml
-/usr/lib64/valgrind/s390-acr.xml
-/usr/lib64/valgrind/s390-fpr-valgrind-s1.xml
-/usr/lib64/valgrind/s390-fpr-valgrind-s2.xml
-/usr/lib64/valgrind/s390-fpr.xml
-/usr/lib64/valgrind/s390x-core64-valgrind-s1.xml
-/usr/lib64/valgrind/s390x-core64-valgrind-s2.xml
-/usr/lib64/valgrind/s390x-core64.xml
-/usr/lib64/valgrind/s390x-generic-valgrind.xml
-/usr/lib64/valgrind/s390x-generic.xml
-/usr/lib64/valgrind/s390x-linux64-valgrind-s1.xml
-/usr/lib64/valgrind/s390x-linux64-valgrind-s2.xml
-/usr/lib64/valgrind/s390x-linux64.xml
+/usr/lib64/valgrind/*.xml
 /usr/lib64/valgrind/vgpreload_core-*-linux.so
 /usr/lib64/valgrind/vgpreload_drd-*-linux.so
 /usr/lib64/valgrind/vgpreload_exp-dhat-*-linux.so
@@ -187,6 +80,20 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/vgpreload_helgrind-*-linux.so
 /usr/lib64/valgrind/vgpreload_massif-*-linux.so
 /usr/lib64/valgrind/vgpreload_memcheck-*-linux.so
+/usr/lib64/valgrind/cachegrind-amd64-linux
+/usr/lib64/valgrind/callgrind-amd64-linux
+/usr/lib64/valgrind/default.supp
+/usr/lib64/valgrind/drd-amd64-linux
+/usr/lib64/valgrind/exp-bbv-amd64-linux
+/usr/lib64/valgrind/exp-dhat-amd64-linux
+/usr/lib64/valgrind/exp-sgcheck-amd64-linux
+/usr/lib64/valgrind/getoff-amd64-linux
+/usr/lib64/valgrind/helgrind-amd64-linux
+/usr/lib64/valgrind/lackey-amd64-linux
+/usr/lib64/valgrind/libmpiwrap-amd64-linux.so
+/usr/lib64/valgrind/massif-amd64-linux
+/usr/lib64/valgrind/memcheck-amd64-linux
+/usr/lib64/valgrind/none-amd64-linux
 
 %files bin
 %defattr(-,root,root,-)
@@ -306,7 +213,6 @@ rm -rf %{buildroot}
 /usr/include/valgrind/vki/vki-xen-version.h
 /usr/include/valgrind/vki/vki-xen-x86.h
 /usr/include/valgrind/vki/vki-xen.h
-/usr/include/valgrind/libvex_guest_tilegx.h
 /usr/include/valgrind/pub_tool_guest.h
 /usr/include/valgrind/pub_tool_transtab.h
 /usr/include/valgrind/vki/vki-scnums-solaris.h
@@ -315,6 +221,8 @@ rm -rf %{buildroot}
 /usr/include/valgrind/vki/vki-xen-physdev.h
 /usr/include/valgrind/vki/vki-xen-schedop.h
 /usr/include/valgrind/vki/vki-xen-xsm.h
+/usr/include/valgrind/pub_tool_xtmemory.h
+/usr/include/valgrind/pub_tool_xtree.h
 
 /usr/lib64/pkgconfig/*.pc
 
