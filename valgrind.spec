@@ -1,6 +1,6 @@
 Name     : valgrind
 Version  : 3.13.0
-Release  : 25
+Release  : 26
 URL      : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
 Source0  : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
 Summary  : Valgrind Memory Debugger
@@ -11,7 +11,7 @@ Requires: valgrind-doc
 BuildRequires : sed
 BuildRequires : zlib-dev
 BuildRequires : libxml2-dev
-BuildRequires : mpich-dev
+BuildRequires : openmpi-dev
 BuildRequires : boost-dev
 
 Patch1: glibc-2.21.patch
