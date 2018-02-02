@@ -1,6 +1,6 @@
 Name     : valgrind
 Version  : 3.13.0
-Release  : 26
+Release  : 27
 URL      : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
 Source0  : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
 Summary  : Valgrind Memory Debugger
