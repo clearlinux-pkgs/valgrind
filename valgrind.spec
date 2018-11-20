@@ -1,8 +1,8 @@
 Name     : valgrind
-Version  : 3.13.0
+Version  : 3.14.0
 Release  : 30
-URL      : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
-Source0  : ftp://sourceware.org/pub/valgrind/valgrind-3.13.0.tar.bz2
+URL      : ftp://sourceware.org/pub/valgrind/valgrind-3.14.0.tar.bz2
+Source0  : ftp://sourceware.org/pub/valgrind/valgrind-3.14.0.tar.bz2
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GPL-2.0+ GFDL-1.2 GPL-2.0
@@ -16,7 +16,6 @@ BuildRequires : boost-dev
 
 Patch1: glibc-2.21.patch
 Patch2: 0001-Accept-glibc-2.21-as-valid.patch
-Patch3: valgrind-ld-separate-code.patch
 
 %description
 
@@ -47,10 +46,9 @@ doc components for the valgrind package.
 
 
 %prep
-%setup -q -n valgrind-3.13.0
+%setup -q -n valgrind-3.14.0
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 # -fexceptions causes memcheck link command to fail when built with GCC 5.1
