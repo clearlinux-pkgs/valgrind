@@ -223,7 +223,7 @@ rm -rf %{buildroot}
 /usr/include/valgrind/vki/vki-xen-xsm.h
 /usr/include/valgrind/pub_tool_xtmemory.h
 /usr/include/valgrind/pub_tool_xtree.h
-
+/usr/include/valgrind/libvex_inner.h
 /usr/lib64/pkgconfig/*.pc
 
 %files doc
