@@ -1,6 +1,8 @@
+%define keepstatic 1
+
 Name     : valgrind
 Version  : 3.15.0
-Release  : 32
+Release  : 33
 URL      : ftp://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
 Source0  : ftp://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
 Summary  : Valgrind Memory Debugger
@@ -34,6 +36,7 @@ bin components for the valgrind package.
 Summary: dev components for the valgrind package.
 Group: Development
 Requires: valgrind-bin
+Requires: valgrind
 
 %description dev
 dev components for the valgrind package.
@@ -64,7 +67,7 @@ libexec components for the valgrind package.
 # -fexceptions causes memcheck link command to fail when built with GCC 5.1
 export CFLAGS=`echo $CFLAGS | sed s,-fexceptions,,g | sed s:-Wp,-D_FORTIFY_SOURCE=2::g | sed s:-fstack-protector::g `
 ./autogen.sh
-%configure --disable-static --enable-only64bit --enable-tls
+%configure --enable-static --enable-only64bit --enable-tls
 make V=1 %{?_smp_mflags}
 
 %check
@@ -105,6 +108,10 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/massif-amd64-linux
 /usr/lib64/valgrind/memcheck-amd64-linux
 /usr/lib64/valgrind/none-amd64-linux
+/usr/lib64/valgrind/libcoregrind-amd64-linux.a
+/usr/lib64/valgrind/libreplacemalloc_toolpreload-amd64-linux.a
+/usr/lib64/valgrind/libvex-amd64-linux.a
+/usr/lib64/valgrind/libvexmultiarch-amd64-linux.a
 
 %files libexec
 %defattr(-,root,root,-)
