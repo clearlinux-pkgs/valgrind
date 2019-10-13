@@ -14,7 +14,7 @@ Requires: valgrind-libexec
 BuildRequires : sed
 BuildRequires : zlib-dev
 BuildRequires : libxml2-dev
-BuildRequires : openmpi-dev
+#BuildRequires : openmpi-dev
 BuildRequires : boost-dev
 
 Patch1: glibc-2.21.patch
@@ -104,7 +104,7 @@ rm -rf %{buildroot}
 /usr/lib64/valgrind/getoff-amd64-linux
 /usr/lib64/valgrind/helgrind-amd64-linux
 /usr/lib64/valgrind/lackey-amd64-linux
-/usr/lib64/valgrind/libmpiwrap-amd64-linux.so
+#/usr/lib64/valgrind/libmpiwrap-amd64-linux.so
 /usr/lib64/valgrind/massif-amd64-linux
 /usr/lib64/valgrind/memcheck-amd64-linux
 /usr/lib64/valgrind/none-amd64-linux
