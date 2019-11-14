@@ -1,0 +1,42 @@
+Configure miss: a 64-bit only build
+Configure miss: a 32-bit only build
+Configure miss: 32 bit build support
+Configure miss: use as an inner Valgrind
+Configure miss: using the undefined behaviour sanitiser
+Configure miss: pthread_mutex_t.__m_kind
+Configure miss: if AT_HWCAP contains the altivec indicator
+Configure miss: if AT_HWCAP contains the vsx indicator
+Configure miss: if AT_HWCAP contains the dfp indicator
+Configure miss: if AT_HWCAP contains the arch_2_05 indicator
+Configure miss: if AT_HWCAP contains the arch_2_06 indicator
+Configure miss: if AT_HWCAP contains the arch_2_07 indicator
+Configure miss: if AT_HWCAP contains the arch_3_00 indicator
+Configure miss: if AT_HWCAP contains the htm indicator
+Configure miss: that assembler knows ISA 2.07 instructions 
+Configure miss: Altivec support in the compiler 
+Configure miss: VSX compiler flag support
+Configure miss: VSX support in the assembler 
+Configure miss: that assembler knows DFP
+Configure miss: that compiler knows -mhard-dfp switch
+Configure miss: if compiler accepts the -mhtm flag
+Configure miss: if compiler can find the htm builtins
+Configure miss: that assembler knows ISA 3.00 
+Configure miss: pthread_create@GLIBC2.0()
+Configure miss: if gcc accepts -mmsa
+Configure miss: if gcc is producing mips n32 binaries
+Configure miss: if gcc is producing mips n64 binaries
+Configure miss: using the link time optimisation
+Configure miss: if gcc accepts -Wstatic-local-in-inline
+Configure miss: if gcc accepts -Wmismatched-new-delete
+Configure miss: if gcc accepts -Winfinite-recursion
+Configure miss: if gcc accepts -Wenum-conversion
+Configure miss: if ppc32/64 as supports mtocrf/mfocrf
+Configure miss: if ppc32/64 asm supports phased out floating point instructions
+Configure miss: if amd64 assembler knows the MPX instructions
+Configure miss: if gcc supports the armv8 crc feature flag
+Configure miss: sys/sysnvl.h usability
+Configure miss: sys/sysnvl.h presence
+Configure miss: sys/sysnvl.h
+Configure miss: primary target for usable MPI2-compliant C compiler and mpi.h
+Configure miss: secondary target for usable MPI2-compliant C compiler and mpi.h
+Configure miss: boost

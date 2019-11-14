@@ -1,4 +1,5 @@
 PKG_NAME := valgrind
-URL := http://valgrind.org/downloads/valgrind-3.15.0.tar.bz2
+URL = ftp://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
+ARCHIVES = 
 
 include ../common/Makefile.common

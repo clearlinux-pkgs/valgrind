@@ -1,1 +1,1 @@
- --enable-only64bit --enable-tls
+|| ./configure --enable-static --enable-only64bit --enable-tls
