@@ -8,9 +8,9 @@
 Name     : valgrind
 Version  : 3.15.0
 Release  : 37
-URL      : ftp://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
-Source0  : ftp://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
-Source1 : ftp://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2.asc
+URL      : https://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
+Source0  : https://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
+Source1 : https://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2.asc
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 GPL-2.0+
