@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : valgrind
-Version  : 3.15.0
-Release  : 38
-URL      : https://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
-Source0  : https://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2
-Source1 : https://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2.asc
+Version  : 3.16.0
+Release  : 39
+URL      : https://sourceware.org/pub/valgrind/valgrind-3.16.0.tar.bz2
+Source0  : https://sourceware.org/pub/valgrind/valgrind-3.16.0.tar.bz2
+Source1  : https://sourceware.org/pub/valgrind/valgrind-3.16.0.tar.bz2.asc
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 GPL-2.0+
@@ -99,8 +99,8 @@ man components for the valgrind package.
 
 
 %prep
-%setup -q -n valgrind-3.15.0
-cd %{_builddir}/valgrind-3.15.0
+%setup -q -n valgrind-3.16.0
+cd %{_builddir}/valgrind-3.16.0
 %patch1 -p1
 %patch2 -p1
 
@@ -113,11 +113,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573753172
+export SOURCE_DATE_EPOCH=1591759460
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure  || ./configure --enable-static --enable-only64bit --enable-tls
 make  %{?_smp_mflags}
@@ -137,15 +137,15 @@ make VERBOSE=1 V=1 %{?_smp_mflags} check ||:
 /usr/bin/perl tests/vg_regtest dhat ||:
 
 %install
-export SOURCE_DATE_EPOCH=1573753172
+export SOURCE_DATE_EPOCH=1591759460
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/valgrind
-cp %{_builddir}/valgrind-3.15.0/COPYING %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/valgrind-3.15.0/COPYING.DOCS %{buildroot}/usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
-cp %{_builddir}/valgrind-3.15.0/VEX/LICENSE.GPL %{buildroot}/usr/share/package-licenses/valgrind/b47456e2c1f38c40346ff00db976a2badf36b5e3
-cp %{_builddir}/valgrind-3.15.0/docs/html/license.gfdl.html %{buildroot}/usr/share/package-licenses/valgrind/2c77cf79a42a9be73f9ffeedf5cc24fb5f5798d9
-cp %{_builddir}/valgrind-3.15.0/docs/html/license.gpl.html %{buildroot}/usr/share/package-licenses/valgrind/5c3eee714153e3b7e6f7fc569c763ec22d56bfb5
-cp %{_builddir}/valgrind-3.15.0/docs/html/licenses.html %{buildroot}/usr/share/package-licenses/valgrind/38fa64ae66498796013077bc2fce12e0d8b1be10
+cp %{_builddir}/valgrind-3.16.0/COPYING %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/valgrind-3.16.0/COPYING.DOCS %{buildroot}/usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
+cp %{_builddir}/valgrind-3.16.0/VEX/LICENSE.GPL %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/valgrind-3.16.0/VEX/LICENSE.README %{buildroot}/usr/share/package-licenses/valgrind/61ef372f94283a2e8909d8a5b7516abe2550fbbe
+cp %{_builddir}/valgrind-3.16.0/docs/html/license.gfdl.html %{buildroot}/usr/share/package-licenses/valgrind/490ef314b099a013ef83bbc16c88451fda2868ee
+cp %{_builddir}/valgrind-3.16.0/docs/html/license.gpl.html %{buildroot}/usr/share/package-licenses/valgrind/fa034719d840be05e568d30b331534ada914c015
 %make_install
 
 %files
@@ -191,13 +191,13 @@ cp %{_builddir}/valgrind-3.15.0/docs/html/licenses.html %{buildroot}/usr/share/p
 /usr/lib64/valgrind/dhat-amd64-linux
 /usr/lib64/valgrind/drd-amd64-linux
 /usr/lib64/valgrind/exp-bbv-amd64-linux
-/usr/lib64/valgrind/exp-sgcheck-amd64-linux
 /usr/lib64/valgrind/getoff-amd64-linux
 /usr/lib64/valgrind/helgrind-amd64-linux
 /usr/lib64/valgrind/i386-coresse-valgrind.xml
 /usr/lib64/valgrind/i386-linux-valgrind.xml
 /usr/lib64/valgrind/lackey-amd64-linux
 /usr/lib64/valgrind/libcoregrind-amd64-linux.a
+/usr/lib64/valgrind/libgcc-sup-amd64-linux.a
 /usr/lib64/valgrind/libreplacemalloc_toolpreload-amd64-linux.a
 /usr/lib64/valgrind/libvex-amd64-linux.a
 /usr/lib64/valgrind/libvexmultiarch-amd64-linux.a
@@ -359,14 +359,17 @@ cp %{_builddir}/valgrind-3.15.0/docs/html/licenses.html %{buildroot}/usr/share/p
 /usr/include/valgrind/vki/vki-arm64-linux.h
 /usr/include/valgrind/vki/vki-darwin.h
 /usr/include/valgrind/vki/vki-linux-drm.h
+/usr/include/valgrind/vki/vki-linux-io_uring.h
 /usr/include/valgrind/vki/vki-linux.h
 /usr/include/valgrind/vki/vki-mips32-linux.h
 /usr/include/valgrind/vki/vki-mips64-linux.h
+/usr/include/valgrind/vki/vki-nanomips-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-amd64-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-arm-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-arm64-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-mips32-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-mips64-linux.h
+/usr/include/valgrind/vki/vki-posixtypes-nanomips-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-ppc32-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-ppc64-linux.h
 /usr/include/valgrind/vki/vki-posixtypes-s390x-linux.h
@@ -374,15 +377,18 @@ cp %{_builddir}/valgrind-3.15.0/docs/html/licenses.html %{buildroot}/usr/share/p
 /usr/include/valgrind/vki/vki-ppc32-linux.h
 /usr/include/valgrind/vki/vki-ppc64-linux.h
 /usr/include/valgrind/vki/vki-s390x-linux.h
+/usr/include/valgrind/vki/vki-scnums-32bit-linux.h
 /usr/include/valgrind/vki/vki-scnums-amd64-linux.h
 /usr/include/valgrind/vki/vki-scnums-arm-linux.h
 /usr/include/valgrind/vki/vki-scnums-arm64-linux.h
 /usr/include/valgrind/vki/vki-scnums-darwin.h
 /usr/include/valgrind/vki/vki-scnums-mips32-linux.h
 /usr/include/valgrind/vki/vki-scnums-mips64-linux.h
+/usr/include/valgrind/vki/vki-scnums-nanomips-linux.h
 /usr/include/valgrind/vki/vki-scnums-ppc32-linux.h
 /usr/include/valgrind/vki/vki-scnums-ppc64-linux.h
 /usr/include/valgrind/vki/vki-scnums-s390x-linux.h
+/usr/include/valgrind/vki/vki-scnums-shared-linux.h
 /usr/include/valgrind/vki/vki-scnums-solaris.h
 /usr/include/valgrind/vki/vki-scnums-x86-linux.h
 /usr/include/valgrind/vki/vki-solaris-repcache.h
@@ -413,7 +419,6 @@ cp %{_builddir}/valgrind-3.15.0/docs/html/licenses.html %{buildroot}/usr/share/p
 /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
 /usr/lib64/valgrind/vgpreload_dhat-amd64-linux.so
 /usr/lib64/valgrind/vgpreload_drd-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_exp-sgcheck-amd64-linux.so
 /usr/lib64/valgrind/vgpreload_helgrind-amd64-linux.so
 /usr/lib64/valgrind/vgpreload_massif-amd64-linux.so
 /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
@@ -426,11 +431,10 @@ cp %{_builddir}/valgrind-3.15.0/docs/html/licenses.html %{buildroot}/usr/share/p
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/valgrind/2c77cf79a42a9be73f9ffeedf5cc24fb5f5798d9
-/usr/share/package-licenses/valgrind/38fa64ae66498796013077bc2fce12e0d8b1be10
+/usr/share/package-licenses/valgrind/490ef314b099a013ef83bbc16c88451fda2868ee
 /usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
-/usr/share/package-licenses/valgrind/5c3eee714153e3b7e6f7fc569c763ec22d56bfb5
-/usr/share/package-licenses/valgrind/b47456e2c1f38c40346ff00db976a2badf36b5e3
+/usr/share/package-licenses/valgrind/61ef372f94283a2e8909d8a5b7516abe2550fbbe
+/usr/share/package-licenses/valgrind/fa034719d840be05e568d30b331534ada914c015
 /usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
 
 %files man
