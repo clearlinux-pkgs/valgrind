@@ -6,11 +6,11 @@
 #
 %define keepstatic 1
 Name     : valgrind
-Version  : 3.16.0
-Release  : 39
-URL      : https://sourceware.org/pub/valgrind/valgrind-3.16.0.tar.bz2
-Source0  : https://sourceware.org/pub/valgrind/valgrind-3.16.0.tar.bz2
-Source1  : https://sourceware.org/pub/valgrind/valgrind-3.16.0.tar.bz2.asc
+Version  : 3.16.1
+Release  : 40
+URL      : https://sourceware.org/pub/valgrind/valgrind-3.16.1.tar.bz2
+Source0  : https://sourceware.org/pub/valgrind/valgrind-3.16.1.tar.bz2
+Source1  : https://sourceware.org/pub/valgrind/valgrind-3.16.1.tar.bz2.asc
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 GPL-2.0+
@@ -99,8 +99,8 @@ man components for the valgrind package.
 
 
 %prep
-%setup -q -n valgrind-3.16.0
-cd %{_builddir}/valgrind-3.16.0
+%setup -q -n valgrind-3.16.1
+cd %{_builddir}/valgrind-3.16.1
 %patch1 -p1
 %patch2 -p1
 
@@ -113,7 +113,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591759460
+export SOURCE_DATE_EPOCH=1592933052
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -137,15 +137,15 @@ make VERBOSE=1 V=1 %{?_smp_mflags} check ||:
 /usr/bin/perl tests/vg_regtest dhat ||:
 
 %install
-export SOURCE_DATE_EPOCH=1591759460
+export SOURCE_DATE_EPOCH=1592933052
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/valgrind
-cp %{_builddir}/valgrind-3.16.0/COPYING %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/valgrind-3.16.0/COPYING.DOCS %{buildroot}/usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
-cp %{_builddir}/valgrind-3.16.0/VEX/LICENSE.GPL %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/valgrind-3.16.0/VEX/LICENSE.README %{buildroot}/usr/share/package-licenses/valgrind/61ef372f94283a2e8909d8a5b7516abe2550fbbe
-cp %{_builddir}/valgrind-3.16.0/docs/html/license.gfdl.html %{buildroot}/usr/share/package-licenses/valgrind/490ef314b099a013ef83bbc16c88451fda2868ee
-cp %{_builddir}/valgrind-3.16.0/docs/html/license.gpl.html %{buildroot}/usr/share/package-licenses/valgrind/fa034719d840be05e568d30b331534ada914c015
+cp %{_builddir}/valgrind-3.16.1/COPYING %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/valgrind-3.16.1/COPYING.DOCS %{buildroot}/usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
+cp %{_builddir}/valgrind-3.16.1/VEX/LICENSE.GPL %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/valgrind-3.16.1/VEX/LICENSE.README %{buildroot}/usr/share/package-licenses/valgrind/61ef372f94283a2e8909d8a5b7516abe2550fbbe
+cp %{_builddir}/valgrind-3.16.1/docs/html/license.gfdl.html %{buildroot}/usr/share/package-licenses/valgrind/00921e181567bf8fdfbc06375d10ed399d48b185
+cp %{_builddir}/valgrind-3.16.1/docs/html/license.gpl.html %{buildroot}/usr/share/package-licenses/valgrind/4b3d52fc140815bc03cbab3184a6be494eb808da
 %make_install
 
 %files
@@ -431,10 +431,10 @@ cp %{_builddir}/valgrind-3.16.0/docs/html/license.gpl.html %{buildroot}/usr/shar
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/valgrind/490ef314b099a013ef83bbc16c88451fda2868ee
+/usr/share/package-licenses/valgrind/00921e181567bf8fdfbc06375d10ed399d48b185
+/usr/share/package-licenses/valgrind/4b3d52fc140815bc03cbab3184a6be494eb808da
 /usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
 /usr/share/package-licenses/valgrind/61ef372f94283a2e8909d8a5b7516abe2550fbbe
-/usr/share/package-licenses/valgrind/fa034719d840be05e568d30b331534ada914c015
 /usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
 
 %files man
