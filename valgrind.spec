@@ -6,16 +6,15 @@
 #
 %define keepstatic 1
 Name     : valgrind
-Version  : 3.16.1
-Release  : 40
-URL      : https://sourceware.org/pub/valgrind/valgrind-3.16.1.tar.bz2
-Source0  : https://sourceware.org/pub/valgrind/valgrind-3.16.1.tar.bz2
-Source1  : https://sourceware.org/pub/valgrind/valgrind-3.16.1.tar.bz2.asc
+Version  : 3.17.0
+Release  : 41
+URL      : https://sourceware.org/pub/valgrind/valgrind-3.17.0.tar.bz2
+Source0  : https://sourceware.org/pub/valgrind/valgrind-3.17.0.tar.bz2
+Source1  : https://sourceware.org/pub/valgrind/valgrind-3.17.0.tar.bz2.asc
 Summary  : Valgrind Memory Debugger
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0 GPL-2.0+
 Requires: valgrind-bin = %{version}-%{release}
-Requires: valgrind-lib = %{version}-%{release}
 Requires: valgrind-libexec = %{version}-%{release}
 Requires: valgrind-license = %{version}-%{release}
 Requires: valgrind-man = %{version}-%{release}
@@ -45,7 +44,6 @@ bin components for the valgrind package.
 %package dev
 Summary: dev components for the valgrind package.
 Group: Development
-Requires: valgrind-lib = %{version}-%{release}
 Requires: valgrind-bin = %{version}-%{release}
 Provides: valgrind-devel = %{version}-%{release}
 Requires: valgrind = %{version}-%{release}
@@ -61,16 +59,6 @@ Requires: valgrind-man = %{version}-%{release}
 
 %description doc
 doc components for the valgrind package.
-
-
-%package lib
-Summary: lib components for the valgrind package.
-Group: Libraries
-Requires: valgrind-libexec = %{version}-%{release}
-Requires: valgrind-license = %{version}-%{release}
-
-%description lib
-lib components for the valgrind package.
 
 
 %package libexec
@@ -99,8 +87,8 @@ man components for the valgrind package.
 
 
 %prep
-%setup -q -n valgrind-3.16.1
-cd %{_builddir}/valgrind-3.16.1
+%setup -q -n valgrind-3.17.0
+cd %{_builddir}/valgrind-3.17.0
 %patch1 -p1
 %patch2 -p1
 
@@ -113,7 +101,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592933052
+export SOURCE_DATE_EPOCH=1616510582
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -137,141 +125,24 @@ make VERBOSE=1 V=1 %{?_smp_mflags} check ||:
 /usr/bin/perl tests/vg_regtest dhat ||:
 
 %install
-export SOURCE_DATE_EPOCH=1592933052
+export SOURCE_DATE_EPOCH=1616510582
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/valgrind
-cp %{_builddir}/valgrind-3.16.1/COPYING %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/valgrind-3.16.1/COPYING.DOCS %{buildroot}/usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
-cp %{_builddir}/valgrind-3.16.1/VEX/LICENSE.GPL %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/valgrind-3.16.1/VEX/LICENSE.README %{buildroot}/usr/share/package-licenses/valgrind/61ef372f94283a2e8909d8a5b7516abe2550fbbe
-cp %{_builddir}/valgrind-3.16.1/docs/html/license.gfdl.html %{buildroot}/usr/share/package-licenses/valgrind/00921e181567bf8fdfbc06375d10ed399d48b185
-cp %{_builddir}/valgrind-3.16.1/docs/html/license.gpl.html %{buildroot}/usr/share/package-licenses/valgrind/4b3d52fc140815bc03cbab3184a6be494eb808da
+cp %{_builddir}/valgrind-3.17.0/COPYING %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/valgrind-3.17.0/COPYING.DOCS %{buildroot}/usr/share/package-licenses/valgrind/fcbf818f92ef8679a88f3778b12b4c8b5810545b
+cp %{_builddir}/valgrind-3.17.0/VEX/LICENSE.GPL %{buildroot}/usr/share/package-licenses/valgrind/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/valgrind-3.17.0/VEX/LICENSE.README %{buildroot}/usr/share/package-licenses/valgrind/61ef372f94283a2e8909d8a5b7516abe2550fbbe
+cp %{_builddir}/valgrind-3.17.0/docs/html/license.gfdl.html %{buildroot}/usr/share/package-licenses/valgrind/00921e181567bf8fdfbc06375d10ed399d48b185
+cp %{_builddir}/valgrind-3.17.0/docs/html/license.gpl.html %{buildroot}/usr/share/package-licenses/valgrind/4b3d52fc140815bc03cbab3184a6be494eb808da
 %make_install
 
 %files
 %defattr(-,root,root,-)
-/usr/lib64/valgrind/32bit-core-valgrind-s1.xml
-/usr/lib64/valgrind/32bit-core-valgrind-s2.xml
-/usr/lib64/valgrind/32bit-core.xml
-/usr/lib64/valgrind/32bit-linux-valgrind-s1.xml
-/usr/lib64/valgrind/32bit-linux-valgrind-s2.xml
-/usr/lib64/valgrind/32bit-linux.xml
-/usr/lib64/valgrind/32bit-sse-valgrind-s1.xml
-/usr/lib64/valgrind/32bit-sse-valgrind-s2.xml
-/usr/lib64/valgrind/32bit-sse.xml
-/usr/lib64/valgrind/64bit-avx-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-avx-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-avx.xml
-/usr/lib64/valgrind/64bit-core-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-core-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-core.xml
-/usr/lib64/valgrind/64bit-linux-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-linux-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-linux.xml
-/usr/lib64/valgrind/64bit-sse-valgrind-s1.xml
-/usr/lib64/valgrind/64bit-sse-valgrind-s2.xml
-/usr/lib64/valgrind/64bit-sse.xml
-/usr/lib64/valgrind/amd64-avx-coresse-valgrind.xml
-/usr/lib64/valgrind/amd64-avx-coresse.xml
-/usr/lib64/valgrind/amd64-avx-linux-valgrind.xml
-/usr/lib64/valgrind/amd64-avx-linux.xml
-/usr/lib64/valgrind/amd64-coresse-valgrind.xml
-/usr/lib64/valgrind/amd64-linux-valgrind.xml
-/usr/lib64/valgrind/arm-core-valgrind-s1.xml
-/usr/lib64/valgrind/arm-core-valgrind-s2.xml
-/usr/lib64/valgrind/arm-core.xml
-/usr/lib64/valgrind/arm-vfpv3-valgrind-s1.xml
-/usr/lib64/valgrind/arm-vfpv3-valgrind-s2.xml
-/usr/lib64/valgrind/arm-vfpv3.xml
-/usr/lib64/valgrind/arm-with-vfpv3-valgrind.xml
-/usr/lib64/valgrind/arm-with-vfpv3.xml
-/usr/lib64/valgrind/cachegrind-amd64-linux
-/usr/lib64/valgrind/callgrind-amd64-linux
-/usr/lib64/valgrind/default.supp
-/usr/lib64/valgrind/dhat-amd64-linux
-/usr/lib64/valgrind/drd-amd64-linux
-/usr/lib64/valgrind/exp-bbv-amd64-linux
-/usr/lib64/valgrind/getoff-amd64-linux
-/usr/lib64/valgrind/helgrind-amd64-linux
-/usr/lib64/valgrind/i386-coresse-valgrind.xml
-/usr/lib64/valgrind/i386-linux-valgrind.xml
-/usr/lib64/valgrind/lackey-amd64-linux
 /usr/lib64/valgrind/libcoregrind-amd64-linux.a
 /usr/lib64/valgrind/libgcc-sup-amd64-linux.a
 /usr/lib64/valgrind/libreplacemalloc_toolpreload-amd64-linux.a
 /usr/lib64/valgrind/libvex-amd64-linux.a
 /usr/lib64/valgrind/libvexmultiarch-amd64-linux.a
-/usr/lib64/valgrind/massif-amd64-linux
-/usr/lib64/valgrind/memcheck-amd64-linux
-/usr/lib64/valgrind/mips-cp0-valgrind-s1.xml
-/usr/lib64/valgrind/mips-cp0-valgrind-s2.xml
-/usr/lib64/valgrind/mips-cp0.xml
-/usr/lib64/valgrind/mips-cpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips-cpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips-cpu.xml
-/usr/lib64/valgrind/mips-fpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips-fpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips-fpu.xml
-/usr/lib64/valgrind/mips-linux-valgrind.xml
-/usr/lib64/valgrind/mips-linux.xml
-/usr/lib64/valgrind/mips64-cp0-valgrind-s1.xml
-/usr/lib64/valgrind/mips64-cp0-valgrind-s2.xml
-/usr/lib64/valgrind/mips64-cp0.xml
-/usr/lib64/valgrind/mips64-cpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips64-cpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips64-cpu.xml
-/usr/lib64/valgrind/mips64-fpu-valgrind-s1.xml
-/usr/lib64/valgrind/mips64-fpu-valgrind-s2.xml
-/usr/lib64/valgrind/mips64-fpu.xml
-/usr/lib64/valgrind/mips64-linux-valgrind.xml
-/usr/lib64/valgrind/mips64-linux.xml
-/usr/lib64/valgrind/none-amd64-linux
-/usr/lib64/valgrind/power-altivec-valgrind-s1.xml
-/usr/lib64/valgrind/power-altivec-valgrind-s2.xml
-/usr/lib64/valgrind/power-altivec.xml
-/usr/lib64/valgrind/power-core-valgrind-s1.xml
-/usr/lib64/valgrind/power-core-valgrind-s2.xml
-/usr/lib64/valgrind/power-core.xml
-/usr/lib64/valgrind/power-fpu-valgrind-s1.xml
-/usr/lib64/valgrind/power-fpu-valgrind-s2.xml
-/usr/lib64/valgrind/power-fpu.xml
-/usr/lib64/valgrind/power-linux-valgrind-s1.xml
-/usr/lib64/valgrind/power-linux-valgrind-s2.xml
-/usr/lib64/valgrind/power-linux.xml
-/usr/lib64/valgrind/power-vsx-valgrind-s1.xml
-/usr/lib64/valgrind/power-vsx-valgrind-s2.xml
-/usr/lib64/valgrind/power-vsx.xml
-/usr/lib64/valgrind/power64-core-valgrind-s1.xml
-/usr/lib64/valgrind/power64-core-valgrind-s2.xml
-/usr/lib64/valgrind/power64-core.xml
-/usr/lib64/valgrind/power64-core2-valgrind-s1.xml
-/usr/lib64/valgrind/power64-core2-valgrind-s2.xml
-/usr/lib64/valgrind/power64-linux-valgrind-s1.xml
-/usr/lib64/valgrind/power64-linux-valgrind-s2.xml
-/usr/lib64/valgrind/power64-linux.xml
-/usr/lib64/valgrind/powerpc-altivec32l-valgrind.xml
-/usr/lib64/valgrind/powerpc-altivec32l.xml
-/usr/lib64/valgrind/powerpc-altivec64l-valgrind.xml
-/usr/lib64/valgrind/powerpc-altivec64l.xml
-/usr/lib64/valgrind/s390-acr-valgrind-s1.xml
-/usr/lib64/valgrind/s390-acr-valgrind-s2.xml
-/usr/lib64/valgrind/s390-acr.xml
-/usr/lib64/valgrind/s390-fpr-valgrind-s1.xml
-/usr/lib64/valgrind/s390-fpr-valgrind-s2.xml
-/usr/lib64/valgrind/s390-fpr.xml
-/usr/lib64/valgrind/s390-vx-valgrind-s1.xml
-/usr/lib64/valgrind/s390-vx-valgrind-s2.xml
-/usr/lib64/valgrind/s390-vx.xml
-/usr/lib64/valgrind/s390x-core64-valgrind-s1.xml
-/usr/lib64/valgrind/s390x-core64-valgrind-s2.xml
-/usr/lib64/valgrind/s390x-core64.xml
-/usr/lib64/valgrind/s390x-generic-valgrind.xml
-/usr/lib64/valgrind/s390x-generic.xml
-/usr/lib64/valgrind/s390x-linux64-valgrind-s1.xml
-/usr/lib64/valgrind/s390x-linux64-valgrind-s2.xml
-/usr/lib64/valgrind/s390x-linux64.xml
-/usr/lib64/valgrind/s390x-vx-linux-valgrind.xml
-/usr/lib64/valgrind/s390x-vx-linux.xml
 
 %files bin
 %defattr(-,root,root,-)
@@ -290,6 +161,7 @@ cp %{_builddir}/valgrind-3.16.1/docs/html/license.gpl.html %{buildroot}/usr/shar
 %defattr(-,root,root,-)
 /usr/include/valgrind/callgrind.h
 /usr/include/valgrind/config.h
+/usr/include/valgrind/dhat.h
 /usr/include/valgrind/drd.h
 /usr/include/valgrind/helgrind.h
 /usr/include/valgrind/libvex.h
@@ -414,20 +286,134 @@ cp %{_builddir}/valgrind-3.16.1/docs/html/license.gpl.html %{buildroot}/usr/shar
 %defattr(0644,root,root,0755)
 %doc /usr/share/doc/valgrind/*
 
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/valgrind/vgpreload_core-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_dhat-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_drd-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_helgrind-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_massif-amd64-linux.so
-/usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
-
 %files libexec
 %defattr(-,root,root,-)
+/usr/libexec/valgrind/32bit-core-valgrind-s1.xml
+/usr/libexec/valgrind/32bit-core-valgrind-s2.xml
+/usr/libexec/valgrind/32bit-core.xml
+/usr/libexec/valgrind/32bit-linux-valgrind-s1.xml
+/usr/libexec/valgrind/32bit-linux-valgrind-s2.xml
+/usr/libexec/valgrind/32bit-linux.xml
+/usr/libexec/valgrind/32bit-sse-valgrind-s1.xml
+/usr/libexec/valgrind/32bit-sse-valgrind-s2.xml
+/usr/libexec/valgrind/32bit-sse.xml
+/usr/libexec/valgrind/64bit-avx-valgrind-s1.xml
+/usr/libexec/valgrind/64bit-avx-valgrind-s2.xml
+/usr/libexec/valgrind/64bit-avx.xml
+/usr/libexec/valgrind/64bit-core-valgrind-s1.xml
+/usr/libexec/valgrind/64bit-core-valgrind-s2.xml
+/usr/libexec/valgrind/64bit-core.xml
+/usr/libexec/valgrind/64bit-linux-valgrind-s1.xml
+/usr/libexec/valgrind/64bit-linux-valgrind-s2.xml
+/usr/libexec/valgrind/64bit-linux.xml
+/usr/libexec/valgrind/64bit-sse-valgrind-s1.xml
+/usr/libexec/valgrind/64bit-sse-valgrind-s2.xml
+/usr/libexec/valgrind/64bit-sse.xml
+/usr/libexec/valgrind/amd64-avx-coresse-valgrind.xml
+/usr/libexec/valgrind/amd64-avx-coresse.xml
+/usr/libexec/valgrind/amd64-avx-linux-valgrind.xml
+/usr/libexec/valgrind/amd64-avx-linux.xml
+/usr/libexec/valgrind/amd64-coresse-valgrind.xml
+/usr/libexec/valgrind/amd64-linux-valgrind.xml
+/usr/libexec/valgrind/arm-core-valgrind-s1.xml
+/usr/libexec/valgrind/arm-core-valgrind-s2.xml
+/usr/libexec/valgrind/arm-core.xml
+/usr/libexec/valgrind/arm-vfpv3-valgrind-s1.xml
+/usr/libexec/valgrind/arm-vfpv3-valgrind-s2.xml
+/usr/libexec/valgrind/arm-vfpv3.xml
+/usr/libexec/valgrind/arm-with-vfpv3-valgrind.xml
+/usr/libexec/valgrind/arm-with-vfpv3.xml
+/usr/libexec/valgrind/cachegrind-amd64-linux
+/usr/libexec/valgrind/callgrind-amd64-linux
+/usr/libexec/valgrind/default.supp
 /usr/libexec/valgrind/dh_view.css
 /usr/libexec/valgrind/dh_view.html
 /usr/libexec/valgrind/dh_view.js
+/usr/libexec/valgrind/dhat-amd64-linux
+/usr/libexec/valgrind/drd-amd64-linux
+/usr/libexec/valgrind/exp-bbv-amd64-linux
+/usr/libexec/valgrind/getoff-amd64-linux
+/usr/libexec/valgrind/helgrind-amd64-linux
+/usr/libexec/valgrind/i386-coresse-valgrind.xml
+/usr/libexec/valgrind/i386-linux-valgrind.xml
+/usr/libexec/valgrind/lackey-amd64-linux
+/usr/libexec/valgrind/massif-amd64-linux
+/usr/libexec/valgrind/memcheck-amd64-linux
+/usr/libexec/valgrind/mips-cp0-valgrind-s1.xml
+/usr/libexec/valgrind/mips-cp0-valgrind-s2.xml
+/usr/libexec/valgrind/mips-cp0.xml
+/usr/libexec/valgrind/mips-cpu-valgrind-s1.xml
+/usr/libexec/valgrind/mips-cpu-valgrind-s2.xml
+/usr/libexec/valgrind/mips-cpu.xml
+/usr/libexec/valgrind/mips-fpu-valgrind-s1.xml
+/usr/libexec/valgrind/mips-fpu-valgrind-s2.xml
+/usr/libexec/valgrind/mips-fpu.xml
+/usr/libexec/valgrind/mips-linux-valgrind.xml
+/usr/libexec/valgrind/mips-linux.xml
+/usr/libexec/valgrind/mips64-cp0-valgrind-s1.xml
+/usr/libexec/valgrind/mips64-cp0-valgrind-s2.xml
+/usr/libexec/valgrind/mips64-cp0.xml
+/usr/libexec/valgrind/mips64-cpu-valgrind-s1.xml
+/usr/libexec/valgrind/mips64-cpu-valgrind-s2.xml
+/usr/libexec/valgrind/mips64-cpu.xml
+/usr/libexec/valgrind/mips64-fpu-valgrind-s1.xml
+/usr/libexec/valgrind/mips64-fpu-valgrind-s2.xml
+/usr/libexec/valgrind/mips64-fpu.xml
+/usr/libexec/valgrind/mips64-linux-valgrind.xml
+/usr/libexec/valgrind/mips64-linux.xml
+/usr/libexec/valgrind/none-amd64-linux
+/usr/libexec/valgrind/power-altivec-valgrind-s1.xml
+/usr/libexec/valgrind/power-altivec-valgrind-s2.xml
+/usr/libexec/valgrind/power-altivec.xml
+/usr/libexec/valgrind/power-core-valgrind-s1.xml
+/usr/libexec/valgrind/power-core-valgrind-s2.xml
+/usr/libexec/valgrind/power-core.xml
+/usr/libexec/valgrind/power-fpu-valgrind-s1.xml
+/usr/libexec/valgrind/power-fpu-valgrind-s2.xml
+/usr/libexec/valgrind/power-fpu.xml
+/usr/libexec/valgrind/power-linux-valgrind-s1.xml
+/usr/libexec/valgrind/power-linux-valgrind-s2.xml
+/usr/libexec/valgrind/power-linux.xml
+/usr/libexec/valgrind/power-vsx-valgrind-s1.xml
+/usr/libexec/valgrind/power-vsx-valgrind-s2.xml
+/usr/libexec/valgrind/power-vsx.xml
+/usr/libexec/valgrind/power64-core-valgrind-s1.xml
+/usr/libexec/valgrind/power64-core-valgrind-s2.xml
+/usr/libexec/valgrind/power64-core.xml
+/usr/libexec/valgrind/power64-core2-valgrind-s1.xml
+/usr/libexec/valgrind/power64-core2-valgrind-s2.xml
+/usr/libexec/valgrind/power64-linux-valgrind-s1.xml
+/usr/libexec/valgrind/power64-linux-valgrind-s2.xml
+/usr/libexec/valgrind/power64-linux.xml
+/usr/libexec/valgrind/powerpc-altivec32l-valgrind.xml
+/usr/libexec/valgrind/powerpc-altivec32l.xml
+/usr/libexec/valgrind/powerpc-altivec64l-valgrind.xml
+/usr/libexec/valgrind/powerpc-altivec64l.xml
+/usr/libexec/valgrind/s390-acr-valgrind-s1.xml
+/usr/libexec/valgrind/s390-acr-valgrind-s2.xml
+/usr/libexec/valgrind/s390-acr.xml
+/usr/libexec/valgrind/s390-fpr-valgrind-s1.xml
+/usr/libexec/valgrind/s390-fpr-valgrind-s2.xml
+/usr/libexec/valgrind/s390-fpr.xml
+/usr/libexec/valgrind/s390-vx-valgrind-s1.xml
+/usr/libexec/valgrind/s390-vx-valgrind-s2.xml
+/usr/libexec/valgrind/s390-vx.xml
+/usr/libexec/valgrind/s390x-core64-valgrind-s1.xml
+/usr/libexec/valgrind/s390x-core64-valgrind-s2.xml
+/usr/libexec/valgrind/s390x-core64.xml
+/usr/libexec/valgrind/s390x-generic-valgrind.xml
+/usr/libexec/valgrind/s390x-generic.xml
+/usr/libexec/valgrind/s390x-linux64-valgrind-s1.xml
+/usr/libexec/valgrind/s390x-linux64-valgrind-s2.xml
+/usr/libexec/valgrind/s390x-linux64.xml
+/usr/libexec/valgrind/s390x-vx-linux-valgrind.xml
+/usr/libexec/valgrind/s390x-vx-linux.xml
+/usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+/usr/libexec/valgrind/vgpreload_dhat-amd64-linux.so
+/usr/libexec/valgrind/vgpreload_drd-amd64-linux.so
+/usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so
+/usr/libexec/valgrind/vgpreload_massif-amd64-linux.so
+/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
 
 %files license
 %defattr(0644,root,root,0755)
