@@ -4,10 +4,13 @@ bison
 ceph
 clr-boot-manager
 cockpit
+codec2
 collectd
 colord
 compat-gtksourceview-soname3
 coreutils
+dtc
+efl
 emacs
 emacs-x11
 farstream
@@ -25,12 +28,14 @@ gst-plugins-ugly
 gstreamer
 gvfs
 hwloc
+igt-gpu-tools
 jq
 kronosnet
 libabigail
 libdrm
 libevdev
 libidn
+libidn2
 libinput
 libksba
 libmemcached
@@ -38,6 +43,8 @@ libratbag
 libreoffice
 libspiro
 libstoragemgmt
+libtasn1
+libtracefs
 libvma
 libxkbcommon
 libzmq
@@ -53,7 +60,7 @@ openvswitch
 otp
 pdns-recursor
 php
-pigeonhole
+pipewire
 protobuf-c
 rsyslog
 sed
@@ -64,4 +71,3 @@ strace
 telemetrics-client
 tpm2-tss
 wine
-xapian-core

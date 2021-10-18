@@ -20,7 +20,6 @@ Configure miss: if amd64 assembler knows the MPX instructions
 Configure miss: if compiler accepts the -mhtm flag
 Configure miss: if compiler can find the htm builtins
 Configure miss: if gcc accepts -Winfinite-recursion
-Configure miss: if gcc accepts -Wmismatched-new-delete
 Configure miss: if gcc accepts -Wstatic-local-in-inline
 Configure miss: if gcc accepts -mmsa
 Configure miss: if gcc is producing mips n32 binaries
@@ -30,17 +29,21 @@ Configure miss: if gcc supports the armv81 feature flag and assembler supports v
 Configure miss: if gcc supports the armv82 feature flag and assembler supports v8.2 instructions
 Configure miss: if ppc32/64 as supports mtocrf/mfocrf
 Configure miss: if ppc32/64 asm supports phased out floating point instructions
+Configure miss: if the linker accepts -Wl,--image-base
 Configure miss: primary target for usable MPI2-compliant C compiler and mpi.h
 Configure miss: pthread_create@GLIBC2.0()
 Configure miss: pthread_mutex_t.__m_kind
+Configure miss: pthread_yield
 Configure miss: secondary target for usable MPI2-compliant C compiler and mpi.h
 Configure miss: sys/sysnvl.h
 Configure miss: that assembler knows DFP
 Configure miss: that assembler knows ISA 2.07 instructions 
 Configure miss: that assembler knows ISA 3.00 
 Configure miss: that assembler knows ISA 3.1 
+Configure miss: that assembler knows darn instruction 
 Configure miss: that assembler knows xscvhpdp 
 Configure miss: that compiler knows -mhard-dfp switch
 Configure miss: use as an inner Valgrind
 Configure miss: using the link time optimisation
 Configure miss: using the undefined behaviour sanitiser
+Configure miss: whether pthread_create needs libpthread
