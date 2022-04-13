@@ -19,7 +19,6 @@ Configure miss: if AT_HWCAP contains the vsx indicator
 Configure miss: if amd64 assembler knows the MPX instructions
 Configure miss: if compiler accepts the -mhtm flag
 Configure miss: if compiler can find the htm builtins
-Configure miss: if gcc accepts -Winfinite-recursion
 Configure miss: if gcc accepts -Wstatic-local-in-inline
 Configure miss: if gcc accepts -mmsa
 Configure miss: if gcc is producing mips n32 binaries
