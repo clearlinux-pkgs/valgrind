@@ -5,7 +5,6 @@ ceph
 clr-boot-manager
 collectd
 colord
-compat-gtksourceview-soname3
 coreutils
 dtc
 emacs
@@ -16,7 +15,6 @@ flatpak-builder
 gjs
 gnome-keyring
 gnutls
-gspell
 gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
@@ -49,7 +47,6 @@ modsecurity
 net-snmp
 notmuch
 oath-toolkit
-open-vm-tools
 openmpi
 openvswitch
 otp
@@ -64,3 +61,4 @@ strace
 telemetrics-client
 tpm2-tss
 wine
+wireplumber
