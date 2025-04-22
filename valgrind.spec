@@ -7,7 +7,7 @@
 %define keepstatic 1
 Name     : valgrind
 Version  : 3.20.0
-Release  : 44
+Release  : 45
 URL      : https://sourceware.org/pub/valgrind/valgrind-3.20.0.tar.bz2
 Source0  : https://sourceware.org/pub/valgrind/valgrind-3.20.0.tar.bz2
 Source1  : https://sourceware.org/pub/valgrind/valgrind-3.20.0.tar.bz2.asc
