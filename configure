@@ -1,1 +1,1 @@
-|| ./configure --enable-static --enable-only64bit --enable-tls
+|| CFLAGS="-O2" ./configure --enable-static --enable-only64bit --enable-tls

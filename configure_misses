@@ -5,7 +5,11 @@ Configure miss: VSX support in the assembler
 Configure miss: a 32-bit only build
 Configure miss: a 64-bit only build
 Configure miss: boost
+Configure miss: fchroot
+Configure miss: free_aligned_sized
 Configure miss: g++ option to enable C++11 features
+Configure miss: getrlimitusage
+Configure miss: gsha256sum
 Configure miss: if AT_HWCAP contains the altivec indicator
 Configure miss: if AT_HWCAP contains the arch_2_05 indicator
 Configure miss: if AT_HWCAP contains the arch_2_06 indicator
@@ -19,21 +23,33 @@ Configure miss: if AT_HWCAP contains the vsx indicator
 Configure miss: if amd64 assembler knows the MPX instructions
 Configure miss: if compiler accepts the -mhtm flag
 Configure miss: if compiler can find the htm builtins
+Configure miss: if gcc accepts -Wbuiltin-memcpy-chk-size
+Configure miss: if gcc accepts -Wfortify-source
+Configure miss: if gcc accepts -Wincompatible-pointer-types-discards-qualifiers
+Configure miss: if gcc accepts -Wnon-power-of-two-alignment
 Configure miss: if gcc accepts -Wstatic-local-in-inline
+Configure miss: if gcc accepts -Wsuspicious-bzero
 Configure miss: if gcc accepts -mmsa
 Configure miss: if gcc is producing mips n32 binaries
 Configure miss: if gcc is producing mips n64 binaries
 Configure miss: if gcc supports the armv8 crc feature flag
 Configure miss: if gcc supports the armv81 feature flag and assembler supports v8.1 instructions
 Configure miss: if gcc supports the armv82 feature flag and assembler supports v8.2 instructions
+Configure miss: if gcc supports the armv82-a+dotprod feature flag and assembler supports dotprod instructions
+Configure miss: if platform has aio_readv
+Configure miss: if platform has openssl crypto
 Configure miss: if ppc32/64 as supports mtocrf/mfocrf
 Configure miss: if ppc32/64 asm supports phased out floating point instructions
-Configure miss: if the linker accepts -Wl,--image-base
+Configure miss: if static libc is available
+Configure miss: libaio
 Configure miss: primary target for usable MPI2-compliant C compiler and mpi.h
 Configure miss: pthread_create@GLIBC2.0()
 Configure miss: pthread_mutex_t.__m_kind
 Configure miss: pthread_yield
 Configure miss: secondary target for usable MPI2-compliant C compiler and mpi.h
+Configure miss: sem_clockwait_np
+Configure miss: setcred
+Configure miss: sha3
 Configure miss: sys/sysnvl.h
 Configure miss: that assembler knows DFP
 Configure miss: that assembler knows ISA 2.07 instructions 

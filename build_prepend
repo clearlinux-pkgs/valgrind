@@ -1,2 +1,4 @@
 export CFLAGS=`echo $CFLAGS | sed s,-fexceptions,,g | sed s:-Wp,-D_FORTIFY_SOURCE=2::g | sed s:-fstack-protector::g `
+export CFLAGS="-O2 -fno-stack-protector"
+export CXXFLAGS="-O2 -fno-stack-protector"
 ./autogen.sh

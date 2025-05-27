@@ -4,3 +4,4 @@ sed
 zlib-dev
 libxml2-dev
 boost-dev
+zstd-dev
